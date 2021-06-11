@@ -1,15 +1,19 @@
-# umi project
+# JAVA 大作业，保龄球赛事管理模拟实验
 
-## Getting Started
+## 相关技术栈
 
-Install dependencies,
+框架：UmiJS,
+语言：Typescript,
+UI组件：ant design,
+状态管理：dva,
+包管理：yarn
 
-```bash
-$ yarn
-```
+## 启动方法
 
-Start the dev server,
+```cmd
 
-```bash
-$ yarn start
+yarn
+
+yarn start
+
 ```
