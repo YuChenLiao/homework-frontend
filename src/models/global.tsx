@@ -6,6 +6,7 @@ export interface defaultState {
   userinfo: {
     username: '';
     password: '';
+    game: [];
   };
   userList: [
     { name: '123456'; password: '123456'; actor: 'admin' },
@@ -44,6 +45,7 @@ const globalState: defaultModel = {
     userinfo: {
       username: '',
       password: '',
+      game: [],
     },
     userList: [
       { name: '123456', password: '123456', actor: 'admin' },

@@ -26,10 +26,10 @@ const GameAdmin: FC<PageProps> = (props) => {
     Modal.confirm({
       title: '请添加内容',
       onOk: () => {
-        addItem;
+        addItem();
       },
       onCancel: () => {
-        cancel;
+        cancel();
       },
       centered: true,
       maskClosable: true,
@@ -102,6 +102,7 @@ const GameAdmin: FC<PageProps> = (props) => {
     }
   };
   const addItem = () => {
+    console.log(temp);
     const { dispatch }: any = props;
     const { simple, double }: any = props.global;
     if (temp.type === 'simple') {

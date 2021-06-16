@@ -1,7 +1,11 @@
-import { Button, Card } from 'antd';
+import { Button, Card, List } from 'antd';
 
 function InfoAdmin() {
-  return <Card>信息管理</Card>;
+  return (
+    <Card>
+      <List />
+    </Card>
+  );
 }
 
 export default InfoAdmin;

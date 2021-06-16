@@ -1,7 +1,11 @@
-import { Button, Card } from 'antd';
+import { Button, Card, List } from 'antd';
 
 function Admin() {
-  return <Card>管理页面</Card>;
+  return (
+    <Card>
+      <List />
+    </Card>
+  );
 }
 
 export default Admin;

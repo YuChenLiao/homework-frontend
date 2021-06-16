@@ -18,32 +18,14 @@ export default defineConfig({
     {
       exact: true,
       path: '/infoCheck',
-      component: '@/pages/infoCheck',
+      component: '@/pages/infoChecks/gameCheck',
       name: '赛事查询',
     },
     {
-      name: '管理',
-      path: '/admin/',
-      routes: [
-        {
-          exact: true,
-          path: '/admin/infoAdmin',
-          component: '@/pages/infoAdmin',
-          name: '信息管理',
-        },
-        {
-          exact: true,
-          path: '/admin/adminPage',
-          component: '@/pages/admin',
-          name: '管理页面',
-        },
-        {
-          exact: true,
-          path: '/admin/gmaeAdmin',
-          component: '@/pages/gameAdmin',
-          name: '赛事管理',
-        },
-      ],
+      exact: true,
+      path: '/admin/gmaeAdmin',
+      component: '@/pages/gameAdmin',
+      name: '赛事管理',
     },
   ],
   fastRefresh: {},
