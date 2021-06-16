@@ -12,6 +12,7 @@ const GameAdmin: FC<PageProps> = (props) => {
   const temp = {
     type: '',
     name: '',
+    id: 0,
     participant: [],
   };
   const setName = (e: any) => {
@@ -24,8 +25,12 @@ const GameAdmin: FC<PageProps> = (props) => {
   const addParentItem = () => {
     Modal.confirm({
       title: '请添加内容',
-      onOk: () => {},
-      onCancel: () => {},
+      onOk: () => {
+        addItem;
+      },
+      onCancel: () => {
+        cancel;
+      },
       centered: true,
       maskClosable: true,
       content: (
@@ -66,11 +71,14 @@ const GameAdmin: FC<PageProps> = (props) => {
       }
     }
   };
-  const addItem = (id: any, type: string) => {
-    const { dispatch }: any = props;
+  const addIn = (id: string, type: string) => {
     const { simple, double }: any = props.global;
+    const { dispatch }: any = props;
     if (type === 'simple') {
-      simple.push(temp);
+      for (let i = 0; i < simple.length; i++) {
+        if (simple[i].id === id)
+          simple[i].participant.push(props.global.userinfo.username);
+      }
       dispatch({
         type: 'global/changeGameMounts',
         payload: {
@@ -79,7 +87,11 @@ const GameAdmin: FC<PageProps> = (props) => {
         },
       });
     } else {
-      double.push(temp);
+      for (let i = 0; i < double.length; i++) {
+        if (double[i].id === id) {
+          double[i].participant.push(props.global.userinfo.username);
+        }
+      }
       dispatch({
         type: 'global/changeGameMounts',
         payload: {
@@ -88,6 +100,35 @@ const GameAdmin: FC<PageProps> = (props) => {
         },
       });
     }
+  };
+  const addItem = () => {
+    const { dispatch }: any = props;
+    const { simple, double }: any = props.global;
+    if (temp.type === 'simple') {
+      simple.push(temp);
+      dispatch({
+        type: 'global/changeGameMounts',
+        payload: {
+          type: temp.type,
+          list: simple,
+        },
+      });
+    } else {
+      double.push(temp);
+      dispatch({
+        type: 'global/changeGameMounts',
+        payload: {
+          type: temp.type,
+          list: double,
+        },
+      });
+    }
+  };
+  const cancel = () => {
+    temp.name = '';
+    temp.id = 0;
+    temp.participant = [];
+    temp.type = '';
   };
   return (
     <Card
@@ -101,6 +142,7 @@ const GameAdmin: FC<PageProps> = (props) => {
       <GameList
         list={props.global.simple}
         delete={deleteItem}
+        addIn={addIn}
         title="单人赛"
         type="simple"
       ></GameList>
@@ -108,6 +150,7 @@ const GameAdmin: FC<PageProps> = (props) => {
       <GameList
         list={props.global.simple}
         delete={deleteItem}
+        addIn={addIn}
         title="双人赛"
         type="double"
       ></GameList>

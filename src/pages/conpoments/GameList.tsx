@@ -6,6 +6,7 @@ const GameList = (props: {
   delete: any;
   title: string;
   type: string;
+  addIn: any;
 }) => {
   const { list } = props;
   return (
