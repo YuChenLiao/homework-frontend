@@ -9,19 +9,21 @@ interface PageProps {
 }
 
 const IndexPage: FC<PageProps> = (props) => {
-  const deleteItem = (id: any) => {
-    const { dispatch }: any = props;
-    const { simple }: any = props.global;
-    for (let i = 0; i < simple.length; i++) {
-      if (simple[i].id === id) simple.splice(i, 1);
-    }
-    dispatch({
-      type: '',
-    });
-  };
+  const deleteItem = () => {};
   return (
-    <Card>
-      <GameList list={props.global.simple} delete={deleteItem}></GameList>
+    <Card title="比赛列表">
+      <GameList
+        list={props.global.simple}
+        delete={deleteItem}
+        title="单人赛"
+        type="simple"
+      ></GameList>
+      <GameList
+        list={props.global.double}
+        delete={deleteItem}
+        title="多人赛"
+        type="double"
+      ></GameList>
     </Card>
   );
 };

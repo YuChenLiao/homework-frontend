@@ -1,11 +1,15 @@
 import { Button, Card, List } from 'antd';
 import styles from './GameList.less';
 
-const GameList = (props: { list: any[] | undefined; delete: any }) => {
+const GameList = (props: {
+  list: any[] | undefined;
+  delete: any;
+  title: string;
+  type: string;
+}) => {
   const { list } = props;
-  console.log(styles);
   return (
-    <Card title="比赛列表">
+    <Card title={props.title}>
       <List
         size="large"
         itemLayout="vertical"
@@ -14,7 +18,7 @@ const GameList = (props: { list: any[] | undefined; delete: any }) => {
           <List.Item>
             <span className={styles.contentClass}>{item.name}</span>
             <span className={styles.buttonClass}>
-              <Button type="link" onClick={props.delete(item.id)}>
+              <Button type="link" onClick={props.delete(item.id, props.type)}>
                 删除 |
               </Button>
             </span>
